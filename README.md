@@ -3,6 +3,8 @@ _ESA Competition Entry | Retro Cyberpunk Portfolio_
 
 ## Project Overview
 
+![Website Preview](src/pics/pagepreview.png)
+
 This project is a creative submission for the **Aliyun ESA (Edge Security Acceleration) Competition**. It reimagines the personal portfolio as an interactive, CLI-based experience, paying homage to the "hacker" aesthetics of the 90s and early 2000s cyberculture.
 
 Deployed on **Aliyun ESA**, this static site leverages edge computing capabilities to deliver a lightning-fast, globally accessible "terminal" to users anywhere in the world.
@@ -28,6 +30,7 @@ Type `help` to see the available commands.
 (Or since this is a global project, try `about`, `project`, etc.!)
 
 ---
+
 ### 声明
 “本项目由阿里云ESA提供加速、计算和保护”
 ![Aliyun ESA Pages](src/pics/aliyunesapages.png)
