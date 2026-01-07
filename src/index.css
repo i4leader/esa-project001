@@ -6,7 +6,7 @@
   --terminal-glow: #33ff3388;
   --terminal-dim: #1a801a;
   --scan-line: rgba(0, 0, 0, 0.5);
-  font-family: 'VT323', monospace;
+  font-family: 'VT323', 'Microsoft YaHei', 'SimHei', 'WenQuanYi Micro Hei', monospace;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -39,15 +39,15 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--terminal-bg); 
+  background: var(--terminal-bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--terminal-dim); 
+  background: var(--terminal-dim);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--terminal-green); 
+  background: var(--terminal-green);
 }
 
 ::selection {

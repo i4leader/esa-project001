@@ -236,9 +236,6 @@ const Terminal = () => {
                         onChange={(e) => setInputVal(e.target.value)}
                         autoFocus
                         className="cmd-input"
-                        autoComplete="off"
-                        autoCorrect="off"
-                        autoCapitalize="off"
                         spellCheck="false"
                         onCompositionStart={handleCompositionStart}
                         onCompositionEnd={handleCompositionEnd}
