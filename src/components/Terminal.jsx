@@ -30,6 +30,7 @@ const Terminal = () => {
     const [inputVal, setInputVal] = useState('');
     const inputRef = useRef(null);
     const bottomRef = useRef(null);
+    const isComposing = useRef(false);
 
     useEffect(() => {
         if (bottomRef.current) {
@@ -180,8 +181,27 @@ const Terminal = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        // Logic moved to handleKeyDown to better support IME
+        if (isComposing.current) return;
         handleCommand(inputVal);
         setInputVal('');
+    };
+
+    const handleCompositionStart = () => {
+        isComposing.current = true;
+    };
+
+    const handleCompositionEnd = () => {
+        isComposing.current = false;
+    };
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            if (isComposing.current) {
+                e.preventDefault();
+                return;
+            }
+        }
     };
 
     return (
@@ -220,6 +240,9 @@ const Terminal = () => {
                         autoCorrect="off"
                         autoCapitalize="off"
                         spellCheck="false"
+                        onCompositionStart={handleCompositionStart}
+                        onCompositionEnd={handleCompositionEnd}
+                        onKeyDown={handleKeyDown}
                     />
                 </form>
                 <div ref={bottomRef} />
