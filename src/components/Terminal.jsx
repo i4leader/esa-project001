@@ -3,7 +3,11 @@ import { commands } from '../utils/commands';
 import { v4 as uuidv4 } from 'uuid';
 import { motion } from 'framer-motion';
 
+import MatrixRain from './MatrixRain';
+import CRTWrapper from './CRTWrapper';
+
 const Terminal = () => {
+    const [showMatrix, setShowMatrix] = useState(false);
     const [history, setHistory] = useState([
         {
             id: uuidv4(),
@@ -42,6 +46,17 @@ const Terminal = () => {
         // Handle Clear
         if (trimmedCmd === 'clear') {
             setHistory([]);
+            return;
+        }
+
+        // Handle Matrix Toggle
+        if (trimmedCmd === 'matrix') {
+            setShowMatrix(!showMatrix);
+            setHistory([...baseHistory, {
+                id: uuidv4(),
+                type: 'output',
+                content: !showMatrix ? 'The Matrix has you...' : 'Disconnected.'
+            }]);
             return;
         }
 
@@ -86,41 +101,43 @@ const Terminal = () => {
     };
 
     return (
-        <div className="terminal" onClick={() => inputRef.current?.focus()}>
-            {history.map((item) => (
-                <div key={item.id} className={`line ${item.type}`}>
-                    {item.type === 'input' && <span className="prompt">{'>'} </span>}
-                    {item.type === 'output' ? (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.2 }}
-                        >
-                            {item.content}
-                        </motion.div>
-                    ) : (
-                        <span>{item.content}</span>
-                    )}
-                </div>
-            ))}
+        <CRTWrapper background={showMatrix ? <MatrixRain /> : null}>
+            <div className="terminal" onClick={() => inputRef.current?.focus()}>
+                {history.map((item) => (
+                    <div key={item.id} className={`line ${item.type}`}>
+                        {item.type === 'input' && <span className="prompt">{'>'} </span>}
+                        {item.type === 'output' ? (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                {item.content}
+                            </motion.div>
+                        ) : (
+                            <span>{item.content}</span>
+                        )}
+                    </div>
+                ))}
 
-            <form onSubmit={handleSubmit} className="input-line">
-                <span className="prompt">{'>'} </span>
-                <input
-                    ref={inputRef}
-                    type="text"
-                    value={inputVal}
-                    onChange={(e) => setInputVal(e.target.value)}
-                    autoFocus
-                    className="cmd-input"
-                    autoComplete="off"
-                    autoCorrect="off"
-                    autoCapitalize="off"
-                    spellCheck="false"
-                />
-            </form>
-            <div ref={bottomRef} />
-        </div>
+                <form onSubmit={handleSubmit} className="input-line">
+                    <span className="prompt">{'>'} </span>
+                    <input
+                        ref={inputRef}
+                        type="text"
+                        value={inputVal}
+                        onChange={(e) => setInputVal(e.target.value)}
+                        autoFocus
+                        className="cmd-input"
+                        autoComplete="off"
+                        autoCorrect="off"
+                        autoCapitalize="off"
+                        spellCheck="false"
+                    />
+                </form>
+                <div ref={bottomRef} />
+            </div>
+        </CRTWrapper>
     );
 };
 

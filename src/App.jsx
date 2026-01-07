@@ -3,12 +3,10 @@ import CRTWrapper from './components/CRTWrapper';
 import Terminal from './components/Terminal';
 import './components/Terminal.css';
 
-function App() {
+const App = () => {
   return (
-    <CRTWrapper>
-      <Terminal />
-    </CRTWrapper>
+    <Terminal />
   );
-}
+};
 
 export default App;
