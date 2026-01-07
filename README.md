@@ -32,6 +32,17 @@ Type `help` to see the available commands.
 
 ---
 
+### ⚠️ Troubleshooting Deployment
+
+If you encounter the error: `code version number exceeds the quota limit`, it means you have reached the maximum number of deployed versions on Aliyun ESA.
+**Solution:**
+1. Log in to the [Aliyun ESA Console](https://esa.console.aliyun.com/).
+2. Navigate to your project -> **Versions** (or Edge Routines).
+3. Delete older, unused versions to free up quota.
+4. Re-deploy.
+
+---
+
 ### 声明
 “本项目由阿里云ESA提供加速、计算和保护”
 ![Aliyun ESA Pages](src/pics/aliyunesapages.png)
