@@ -1,7 +1,7 @@
 {
-    "build": {
-        "command": "npm run build",
-        "output": "dist"
+    "feature_flags": {
+        "assets": "dist",
+        "build": "npm run build"
     },
     "routes": [
         {
