@@ -25,7 +25,7 @@ In an era of clean, minimalist, and often sterile UI design, the **Retro Termina
 ## How to Explore
 
 Type `help` to see the available commands.
-(Or since this is a global project, try `关于我`, `项目`, etc.!)
+(Or since this is a global project, try `about`, `project`, etc.!)
 
 ---
 ### 声明
